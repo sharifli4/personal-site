@@ -1,0 +1,107 @@
+/* ============================================
+   RETRO TV PORTFOLIO - Main Styles
+   ============================================ */
+
+/* CSS Custom Properties (Theme Variables) */
+:root {
+  /* Frame Colors - Rich Wood Grain */
+  --tv-frame-primary: #8B5A2B;
+  --tv-frame-secondary: #A0522D;
+  --tv-frame-dark: #5D3A1A;
+  --tv-frame-highlight: #CD853F;
+  --tv-frame-shadow: #3E2723;
+
+  /* Trim & Accents */
+  --tv-trim: #6B5010;
+  --tv-trim-dark: #5A440E;
+  --tv-trim-highlight: #D4A820;
+
+  /* Screen & Bezel */
+  --tv-bezel: #2C2C2C;
+  --tv-bezel-inner: #1a1a1a;
+  --tv-screen-bg: #0a0a12;
+  --tv-screen-glow: rgba(100, 149, 237, 0.15);
+
+  /* Controls - Vintage Brass/Gold */
+  --knob-base: #2a2a2a;
+  --knob-rim: #B8860B;
+  --knob-highlight: #DAA520;
+  --knob-shadow: #1a1a1a;
+
+  --button-bg: #8B7355;
+  --button-text: #2a2a2a;
+  --button-pressed: #6B5344;
+
+  /* Indicator Light */
+  --led-off: #4a1a1a;
+  --led-on: #ff0000;
+  --led-glow: rgba(255, 0, 0, 0.6);
+
+  /* Typography */
+  --font-brand: 'Segoe UI', 'Arial Black', sans-serif;
+  --font-label: 'Segoe UI', Arial, sans-serif;
+  --font-display: 'Courier New', monospace;
+
+  /* Dimensions - Full Page */
+  --tv-width: 100vw;
+  --tv-height: 100vh;
+  --screen-ratio: 4/3;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--font-label);
+  background: #000;
+}
+
+/* Main Container - Full Page */
+.tv-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+.fade-out {
+  animation: fadeOut var(--transition-normal) forwards;
+}
+
+/* Focus Styles for Accessibility */
+button:focus-visible,
+.knob:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+

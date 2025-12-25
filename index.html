@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro TV Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tv-frame.css">
+  <link rel="stylesheet" href="css/tv-screen.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <main class="tv-container">
+    <!-- Antennas -->
+    <div class="tv-antennas">
+      <div class="antenna antenna-left">
+        <div class="antenna-rod"></div>
+        <div class="antenna-tip"></div>
+      </div>
+      <div class="antenna antenna-right">
+        <div class="antenna-rod"></div>
+        <div class="antenna-tip"></div>
+      </div>
+      <div class="antenna-base"></div>
+    </div>
+
+    <!-- Main TV Body -->
+    <div class="tv-body">
+      <!-- Screen Section -->
+      <div class="tv-screen-section">
+        <div class="tv-bezel">
+          <div class="tv-screen" id="tvScreen">
+            <!-- Static Canvas (noise effect) -->
+            <canvas id="staticCanvas" class="static-canvas"></canvas>
+
+            <!-- Content Display -->
+            <div class="screen-content" id="screenContent">
+              <div class="channel-number" id="channelNumber">01</div>
+              <div class="project-display" id="projectDisplay">
+                <div class="project-thumbnail" id="projectThumbnail"></div>
+                <div class="project-icon" id="projectIcon">🌐</div>
+                <div class="project-info">
+                  <h2 class="project-title" id="projectTitle">Project Name</h2>
+                  <p class="project-description" id="projectDescription">Project description goes here</p>
+                  <p class="project-url" id="projectUrl">visacus.com</p>
+                </div>
+              </div>
+              <div class="click-prompt">Click to visit</div>
+            </div>
+
+            <!-- Screen Off State -->
+            <div class="screen-off" id="screenOff">
+              <div class="screen-reflection"></div>
+            </div>
+
+            <!-- Screen Effects Overlays -->
+            <div class="screen-effects">
+              <div class="scanlines"></div>
+              <div class="screen-glow"></div>
+              <div class="vignette"></div>
+              <div class="screen-curve"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Label -->
+        <div class="tv-brand">
+          <span class="brand-name">RETROVISION</span>
+        </div>
+      </div>
+
+      <!-- Control Panel -->
+      <div class="tv-controls">
+        <!-- Speaker Grille -->
+        <div class="speaker-grille">
+          <div class="speaker-holes">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <!-- Knobs Section -->
+        <div class="knobs-section">
+          <!-- Channel Knob -->
+          <div class="control-group">
+            <div class="knob-container">
+              <div class="knob channel-knob" id="channelKnob" data-value="0">
+                <div class="knob-indicator"></div>
+                <div class="knob-grip"></div>
+              </div>
+            </div>
+            <span class="control-label">CHANNEL</span>
+          </div>
+
+          <!-- Volume Knob -->
+          <div class="control-group">
+            <div class="knob-container">
+              <div class="knob volume-knob" id="volumeKnob" data-value="50">
+                <div class="knob-indicator"></div>
+                <div class="knob-grip"></div>
+              </div>
+            </div>
+            <span class="control-label">VOLUME</span>
+          </div>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="buttons-section">
+          <!-- Channel Buttons -->
+          <div class="channel-buttons">
+            <button class="tv-button channel-up" id="channelUp" aria-label="Channel Up">
+              <span class="button-symbol">+</span>
+            </button>
+            <button class="tv-button channel-down" id="channelDown" aria-label="Channel Down">
+              <span class="button-symbol">-</span>
+            </button>
+          </div>
+
+          <!-- Power Section -->
+          <div class="power-section">
+            <button class="power-button" id="powerButton" aria-label="Power">
+              <div class="power-icon"></div>
+            </button>
+            <div class="power-indicator" id="powerIndicator"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TV Legs -->
+    <div class="tv-legs">
+      <div class="leg leg-left"></div>
+      <div class="leg leg-right"></div>
+    </div>
+  </main>
+
+  <!-- JavaScript Modules -->
+  <script src="js/projects.js"></script>
+  <script src="js/audio-manager.js"></script>
+  <script src="js/static-effect.js"></script>
+  <script src="js/knob-control.js"></script>
+  <script src="js/tv-controller.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

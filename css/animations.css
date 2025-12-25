@@ -1,0 +1,382 @@
+/* ============================================
+   RETRO TV PORTFOLIO - Animations
+   ============================================ */
+
+/* === BASIC TRANSITIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* === ANTENNA ANIMATIONS === */
+@keyframes antennaWobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+.antenna:hover {
+  animation: antennaWobble 0.5s ease infinite;
+}
+
+/* Antenna signal reception */
+@keyframes antennaSignal {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-28deg); }
+}
+
+.antenna-left.receiving {
+  animation: antennaSignal 0.3s ease infinite;
+}
+
+.antenna-right.receiving {
+  animation: antennaSignal 0.3s ease infinite reverse;
+}
+
+/* === POWER ANIMATIONS === */
+@keyframes powerOn {
+  0% {
+    clip-path: inset(50% 0 50% 0);
+    filter: brightness(2);
+  }
+  50% {
+    clip-path: inset(0 0 0 0);
+    filter: brightness(1.5);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    filter: brightness(1);
+  }
+}
+
+@keyframes powerOnLine {
+  0% {
+    height: 2px;
+    opacity: 1;
+  }
+  50% {
+    height: 100%;
+    opacity: 0.8;
+  }
+  100% {
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes powerOffDot {
+  0% {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 100%;
+    height: 4px;
+    border-radius: 0;
+    opacity: 1;
+  }
+  80% {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    opacity: 1;
+  }
+  100% {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    opacity: 0;
+  }
+}
+
+/* Warm up glow effect */
+@keyframes warmUp {
+  0% {
+    filter: brightness(0.3) saturate(0.5);
+  }
+  50% {
+    filter: brightness(0.8) saturate(0.8);
+  }
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+}
+
+.tv-screen.warming-up .screen-content {
+  animation: warmUp 1s ease-out forwards;
+}
+
+/* === CHANNEL DISPLAY === */
+@keyframes channelFlash {
+  0% { opacity: 1; }
+  10% { opacity: 0.5; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* === SCREEN FLICKER === */
+@keyframes screenFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  95% { opacity: 0.9; }
+  96% { opacity: 1; }
+}
+
+.tv-screen.on {
+  animation: screenFlicker 8s ease infinite;
+}
+
+/* === GLITCH EFFECTS === */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    transform: translate(2px, -1px);
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    transform: translate(-1px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes glitchOverlay {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+/* Horizontal interference lines */
+@keyframes horizontalLines {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* === CHANNEL SWITCH TRANSITIONS === */
+/* Roll in from top */
+@keyframes rollIn {
+  0% {
+    transform: translateY(-100%);
+    filter: brightness(1.5) contrast(1.2);
+  }
+  30% {
+    filter: brightness(1.3) contrast(1.1);
+  }
+  100% {
+    transform: translateY(0);
+    filter: brightness(1) contrast(1);
+  }
+}
+
+/* Slide in from side */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* RGB Split effect */
+@keyframes rgbSplit {
+  0% {
+    text-shadow:
+      -5px 0 #ff0000,
+      5px 0 #00ffff;
+    filter: blur(2px);
+  }
+  50% {
+    text-shadow:
+      -2px 0 #ff0000,
+      2px 0 #00ffff;
+    filter: blur(1px);
+  }
+  100% {
+    text-shadow: none;
+    filter: blur(0);
+  }
+}
+
+/* Zoom in effect */
+@keyframes zoomIn {
+  0% {
+    transform: scale(1.3);
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* === STATIC NOISE === */
+@keyframes staticNoise {
+  0% { opacity: 0.7; }
+  10% { opacity: 0.5; }
+  20% { opacity: 0.8; }
+  30% { opacity: 0.4; }
+  40% { opacity: 0.9; }
+  50% { opacity: 0.6; }
+  60% { opacity: 0.8; }
+  70% { opacity: 0.5; }
+  80% { opacity: 0.7; }
+  90% { opacity: 0.9; }
+  100% { opacity: 0.7; }
+}
+
+.static-canvas.active {
+  animation: staticNoise 0.1s steps(1) infinite;
+}
+
+/* === NO SIGNAL === */
+@keyframes noSignalBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* === LED PULSE === */
+@keyframes ledPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px var(--led-glow),
+      0 0 20px var(--led-glow),
+      inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 15px var(--led-glow),
+      0 0 30px var(--led-glow),
+      0 0 40px rgba(255, 0, 0, 0.3),
+      inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.power-indicator.on {
+  animation: ledPulse 2s ease infinite;
+}
+
+/* === BUTTON PRESS === */
+@keyframes buttonPress {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+/* === KNOB CLICK FEEDBACK === */
+@keyframes knobClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.knob.clicked {
+  animation: knobClick 0.15s ease;
+}
+
+/* === SCANLINE SCROLL (optional intense effect) === */
+@keyframes scanlineScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* === INTERFERENCE BARS === */
+@keyframes interferenceBars {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Horizontal interference bar */
+.interference-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  animation: interferenceBars 0.5s linear;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* === CONTENT TRANSITIONS === */
+/* Fade through static */
+@keyframes fadeToStatic {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeFromStatic {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* === TUBE WARM COLOR SHIFT === */
+@keyframes tubeWarmup {
+  0% {
+    filter: sepia(0.3) brightness(0.5);
+  }
+  100% {
+    filter: sepia(0) brightness(1);
+  }
+}
+
+/* === HOVER EFFECTS === */
+.tv-screen.on:hover .scanlines {
+  opacity: 0.4;
+}
+
+/* Screen hover glow */
+.screen-content:hover {
+  filter: brightness(1.05);
+}
+
+/* === LOADING ANIMATION === */
+@keyframes loadingDots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}

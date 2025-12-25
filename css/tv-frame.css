@@ -1,0 +1,566 @@
+/* ============================================
+   RETRO TV PORTFOLIO - TV Frame Styles
+   80s Plastic Box Design
+   ============================================ */
+
+/* === ANTENNAS (Hidden) === */
+.tv-antennas {
+  display: none;
+}
+
+.antenna {
+  position: relative;
+  transform-origin: bottom center;
+}
+
+.antenna-left {
+  transform: rotate(-25deg);
+}
+
+.antenna-right {
+  transform: rotate(25deg);
+}
+
+.antenna-rod {
+  width: 6px;
+  height: 80px;
+  background: linear-gradient(90deg,
+    #888 0%,
+    #c0c0c0 30%,
+    #e0e0e0 50%,
+    #c0c0c0 70%,
+    #888 100%
+  );
+  border-radius: 3px;
+  box-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.antenna-tip {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 30% 30%,
+    #e0e0e0 0%,
+    #a0a0a0 50%,
+    #707070 100%
+  );
+  border-radius: 50%;
+  box-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.4),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.antenna-base {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(180deg,
+    var(--tv-frame-highlight) 0%,
+    var(--tv-frame-primary) 50%,
+    var(--tv-frame-dark) 100%
+  );
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* === MAIN TV BODY - Wood Grain Style === */
+.tv-body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  background:
+    /* Horizontal wood grain lines */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(0,0,0,0.03) 8px,
+      rgba(0,0,0,0.03) 9px,
+      transparent 9px,
+      transparent 20px,
+      rgba(0,0,0,0.02) 20px,
+      rgba(0,0,0,0.02) 21px
+    ),
+    /* Wood grain texture - subtle vertical lines */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.02) 2px,
+      rgba(0,0,0,0.02) 3px,
+      transparent 3px,
+      transparent 8px,
+      rgba(255,255,255,0.02) 8px,
+      rgba(255,255,255,0.02) 9px
+    ),
+    /* Base wood gradient */
+    linear-gradient(160deg,
+      #D2A679 0%,
+      #C49A6C 15%,
+      #A67B4B 40%,
+      #8B5A2B 70%,
+      #6B4423 100%
+    );
+  padding: 30px;
+  gap: 30px;
+  position: relative;
+  border-radius: 20px;
+  box-shadow:
+    inset 3px 3px 0 rgba(255,255,255,0.12),
+    inset -3px -3px 0 rgba(0,0,0,0.25),
+    8px 8px 0 rgba(0,0,0,0.35);
+  border: 3px solid #5D3A1A;
+}
+
+/* Clean overlay - minimal */
+.tv-body::before {
+  display: none;
+}
+
+/* === SCREEN SECTION - Full Page === */
+.tv-screen-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 0; /* Allow flex shrinking */
+}
+
+.tv-bezel {
+  flex: 1;
+  display: flex;
+  background: linear-gradient(145deg,
+    #2a2a2a 0%,
+    #1a1a1a 100%
+  );
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow:
+    inset 4px 4px 0 rgba(0, 0, 0, 0.4),
+    inset -2px -2px 0 rgba(255, 255, 255, 0.05);
+  min-height: 0;
+}
+
+/* === BRAND LABEL (Hidden for clean look) === */
+.tv-brand {
+  display: none;
+}
+
+.brand-name {
+  display: none;
+}
+
+/* === CONTROL PANEL === */
+.tv-controls {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 30px 15px;
+  background: transparent;
+}
+
+/* === SPEAKER GRILLE (Hidden for clean look) === */
+.speaker-grille {
+  display: none;
+}
+
+.speaker-holes {
+  display: none;
+}
+
+/* === KNOBS SECTION === */
+.knobs-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-label {
+  display: none;
+}
+
+/* === KNOBS - Vintage Matte Plastic Style === */
+.knob-container {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+
+/* Recessed base ring */
+.knob-container::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(145deg,
+    #5D3A1A 0%,
+    #3E2723 100%
+  );
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.5);
+  border: 1px solid #4A2C17;
+}
+
+/* Channel knob - larger */
+.channel-knob {
+  width: 70px !important;
+  height: 70px !important;
+}
+
+/* Volume knob - smaller */
+.volume-knob {
+  width: 55px !important;
+  height: 55px !important;
+}
+
+.control-group:last-of-type .knob-container {
+  width: 55px;
+  height: 55px;
+}
+
+.knob {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    /* Wood grain texture */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.05) 3px,
+      rgba(0,0,0,0.05) 4px
+    ),
+    linear-gradient(145deg,
+      #C49A6C 0%,
+      #A67B4B 30%,
+      #8B5A2B 70%,
+      #6B4423 100%
+    );
+  box-shadow:
+    3px 4px 6px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  position: relative;
+  transition: box-shadow var(--transition-fast);
+  border: 2px solid #5C4033;
+}
+
+.knob::before {
+  display: none;
+}
+
+.knob:hover {
+  box-shadow:
+    3px 4px 8px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.35),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.knob:active,
+.knob.dragging {
+  cursor: grabbing;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.4),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.knob-indicator {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 12px;
+  background: linear-gradient(180deg, #3E2723 0%, #2E1F1A 100%);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  z-index: 2;
+}
+
+.knob-grip {
+  display: none;
+}
+
+/* === BUTTONS === */
+.buttons-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.channel-buttons {
+  display: none;
+}
+
+.tv-button {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(145deg,
+    #4a4a4a 0%,
+    #2a2a2a 50%,
+    #1a1a1a 100%
+  );
+  border: 2px solid #3a3a3a;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow:
+    3px 4px 8px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.1),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.tv-button::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border-radius: 50%;
+  background: linear-gradient(145deg,
+    #3a3a3a 0%,
+    #252525 100%
+  );
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.05);
+}
+
+.tv-button:hover {
+  background: linear-gradient(145deg,
+    #555 0%,
+    #333 50%,
+    #222 100%
+  );
+}
+
+.tv-button:active {
+  transform: scale(0.95);
+  box-shadow:
+    1px 2px 4px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.button-symbol {
+  position: relative;
+  z-index: 1;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #888;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* === POWER SECTION === */
+.power-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.power-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:
+    /* Wood grain texture */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.05) 2px,
+      rgba(0,0,0,0.05) 3px
+    ),
+    linear-gradient(145deg,
+      #C49A6C 0%,
+      #A67B4B 30%,
+      #8B5A2B 70%,
+      #6B4423 100%
+    );
+  border: 2px solid #5C4033;
+  cursor: pointer;
+  box-shadow:
+    3px 4px 6px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Recessed base for power button */
+.power-section::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(145deg,
+    #5D3A1A 0%,
+    #3E2723 100%
+  );
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.5);
+  border: 1px solid #4A2C17;
+  z-index: -1;
+}
+
+.power-button::before {
+  display: none;
+}
+
+.power-button:hover {
+  box-shadow:
+    3px 4px 8px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.35),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.power-button:active {
+  transform: scale(0.95);
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.4),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.power-icon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #3E2723;
+  border-radius: 50%;
+  position: relative;
+}
+
+.power-icon::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 8px;
+  background: #3E2723;
+  border-radius: 2px;
+}
+
+/* Power Indicator LED */
+.power-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--led-off);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-normal);
+}
+
+.power-indicator.on {
+  background: radial-gradient(circle at 30% 30%,
+    #ff6666 0%,
+    var(--led-on) 50%,
+    #aa0000 100%
+  );
+  box-shadow:
+    0 0 10px var(--led-glow),
+    0 0 20px var(--led-glow),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* === TV LEGS (Hidden for full-page mode) === */
+.tv-legs {
+  display: none;
+}
+
+.leg {
+  width: 25px;
+  height: 40px;
+  background: linear-gradient(90deg,
+    #4a4a4a 0%,
+    #6a6a6a 30%,
+    #8a8a8a 50%,
+    #6a6a6a 70%,
+    #4a4a4a 100%
+  );
+  border-radius: 0 0 8px 8px;
+  box-shadow:
+    3px 5px 8px rgba(0, 0, 0, 0.4),
+    inset 1px 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.leg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 5px;
+  background: #3a3a3a;
+  border-radius: 0 0 5px 5px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .tv-body {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .tv-controls {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+  }
+
+  .knobs-section {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .knob-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .channel-knob {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .volume-knob {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .control-group:last-of-type .knob-container {
+    width: 50px;
+    height: 50px;
+  }
+}
