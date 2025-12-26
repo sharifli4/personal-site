@@ -28,8 +28,14 @@ class TVController {
       projectUrl: null,
       powerIndicator: null,
       antennaLeft: null,
-      antennaRight: null
+      antennaRight: null,
+      previewContainer: null,
+      previewFrame: null,
+      projectDisplay: null
     };
+
+    // Preview state tracking
+    this.previewLoaded = false;
 
     // Components
     this.staticEffect = null;
@@ -58,6 +64,9 @@ class TVController {
     this.elements.powerIndicator = document.getElementById('powerIndicator');
     this.elements.antennaLeft = document.querySelector('.antenna-left');
     this.elements.antennaRight = document.querySelector('.antenna-right');
+    this.elements.previewContainer = document.getElementById('previewContainer');
+    this.elements.previewFrame = document.getElementById('previewFrame');
+    this.elements.projectDisplay = document.getElementById('projectDisplay');
 
     // Initialize static effect
     this.staticEffect = new StaticEffect('staticCanvas');
@@ -443,7 +452,7 @@ class TVController {
       this.elements.channelNumber.textContent = String(project.id).padStart(2, '0');
     }
 
-    // Update project info
+    // Update project info (for fallback display)
     if (this.elements.projectTitle) {
       this.elements.projectTitle.textContent = project.title;
     }
@@ -474,6 +483,52 @@ class TVController {
         .replace('http://', '')
         .replace('www.', '');
       this.elements.projectUrl.textContent = displayUrl;
+    }
+
+    // Try to load live preview
+    this.loadPreview(project);
+  }
+
+  /**
+   * Load preview - icon fallback, screenshot, or live proxy
+   */
+  loadPreview(project) {
+    if (!this.elements.previewContainer) return;
+
+    // Use icon fallback - hide preview, show default display
+    if (project.useIcon) {
+      this.elements.previewContainer.classList.remove('active');
+      return;
+    }
+
+    // Get or create screenshot image element
+    let img = this.elements.previewContainer.querySelector('.preview-screenshot');
+    if (!img) {
+      img = document.createElement('img');
+      img.className = 'preview-screenshot';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:top;';
+      this.elements.previewContainer.appendChild(img);
+    }
+
+    if (project.screenshot) {
+      // Use static screenshot
+      this.elements.previewFrame.style.display = 'none';
+      img.style.display = 'block';
+      img.src = project.screenshot;
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      img.style.objectPosition = 'top';
+      this.elements.previewContainer.classList.add('active');
+    } else {
+      // Use live proxy
+      const PROXY_URL = 'https://tv-proxy.shariflii.workers.dev';
+      const proxyUrl = `${PROXY_URL}/?url=${encodeURIComponent(project.url)}`;
+
+      img.style.display = 'none';
+      this.elements.previewFrame.style.display = 'block';
+      this.elements.previewFrame.src = proxyUrl;
+      this.elements.previewContainer.classList.add('active');
     }
   }
 

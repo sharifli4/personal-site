@@ -23,7 +23,8 @@ const PROJECTS = [
     url: "https://visacus.com",
     thumbnail: "linear-gradient(135deg, #f0f0f0 0%, #c0c0c0 30%, #808080 70%, #404040 100%)",
     icon: "🌐",
-    color: "#888"
+    color: "#888",
+    screenshot: null  // Uses live proxy
   },
   {
     id: 2,
@@ -32,7 +33,8 @@ const PROJECTS = [
     url: "https://github.com/sharifli4/xjson",
     thumbnail: "linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 40%, #606060 100%)",
     icon: "{ }",
-    color: "#999"
+    color: "#999",
+    screenshot: null  // Uses live proxy
   },
   {
     id: 3,
@@ -41,7 +43,8 @@ const PROJECTS = [
     url: "https://github.com/sharifli4/clickbait-hider",
     thumbnail: "linear-gradient(45deg, #d0d0d0 0%, #909090 50%, #505050 100%)",
     icon: "🛡️",
-    color: "#aaa"
+    color: "#aaa",
+    screenshot: null  // Uses live proxy
   },
   {
     id: 4,
@@ -50,7 +53,8 @@ const PROJECTS = [
     url: "https://www.linkedin.com/in/kanan-sharifli/",
     thumbnail: "linear-gradient(160deg, #e8e8e8 0%, #b0b0b0 50%, #707070 100%)",
     icon: "in",
-    color: "#777"
+    color: "#777",
+    useIcon: true  // Show icon instead of preview
   },
   {
     id: 5,
@@ -59,7 +63,8 @@ const PROJECTS = [
     url: "https://x.com/sharifli4",
     thumbnail: "linear-gradient(135deg, #e0e0e0 0%, #a8a8a8 40%, #686868 100%)",
     icon: "𝕏",
-    color: "#888"
+    color: "#888",
+    useIcon: true  // Show icon instead of preview
   }
 ];
 
