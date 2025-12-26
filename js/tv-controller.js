@@ -158,15 +158,23 @@ class TVController {
     }
 
     // Screen click - open project URL or turn on TV
-    if (this.elements.screenContent) {
-      this.elements.screenContent.addEventListener('click', () => {
-        if (this.isOn && !this.isTransitioning) {
-          const project = window.ProjectData.getProject(this.currentChannel);
-          if (project?.url) {
-            window.open(project.url, '_blank');
-          }
+    const openProjectUrl = () => {
+      if (this.isOn && !this.isTransitioning) {
+        const project = window.ProjectData.getProject(this.currentChannel);
+        if (project?.url) {
+          window.open(project.url, '_blank');
         }
-      });
+      }
+    };
+
+    if (this.elements.screenContent) {
+      this.elements.screenContent.addEventListener('click', openProjectUrl);
+    }
+
+    // Also handle click on preview container
+    if (this.elements.previewContainer) {
+      this.elements.previewContainer.addEventListener('click', openProjectUrl);
+      this.elements.previewContainer.style.cursor = 'pointer';
     }
 
     // Click screen-off area to turn on TV
@@ -427,8 +435,21 @@ class TVController {
    * Play channel transition effect
    */
   async playTransition(effect) {
-    // Always show static burst when changing channels
-    await this.staticEffect?.burst(500);
+    // Add switching class for CSS animations
+    this.elements.screen?.classList.add('switching');
+
+    // Show static burst with timeout safety
+    try {
+      await Promise.race([
+        this.staticEffect?.burst(400) || Promise.resolve(),
+        new Promise(resolve => setTimeout(resolve, 500))
+      ]);
+    } catch (e) {
+      // Ignore errors
+    }
+
+    // Remove switching class
+    this.elements.screen?.classList.remove('switching');
   }
 
   /**
@@ -494,6 +515,11 @@ class TVController {
    */
   loadPreview(project) {
     if (!this.elements.previewContainer) return;
+
+    // Reset iframe src to stop any pending loads
+    if (this.elements.previewFrame) {
+      this.elements.previewFrame.src = 'about:blank';
+    }
 
     // Use icon fallback - hide preview, show default display
     if (project.useIcon) {
