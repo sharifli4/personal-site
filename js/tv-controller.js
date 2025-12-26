@@ -172,6 +172,19 @@ class TVController {
 
     // Keyboard controls
     document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+
+    // Mouse wheel on screen to change channels
+    if (this.elements.screen) {
+      this.elements.screen.addEventListener('wheel', (e) => {
+        if (!this.isOn || this.isTransitioning) return;
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          this.nextChannel();
+        } else if (e.deltaY > 0) {
+          this.prevChannel();
+        }
+      }, { passive: false });
+    }
   }
 
   /**
